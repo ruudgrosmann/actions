@@ -1,11 +1,8 @@
 name: tester
-on: [push]
+'on': push
 jobs:
   my-job: tester
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Write a multi-line message
-        run: |
-            cat bin/tester
-            echo dit is een test
+  'runs-on': ubuntu-latest
+  steps:
+    - name: Write a multi-line message
+      run: echo dit is een test
