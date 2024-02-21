@@ -1,8 +1,9 @@
 name: tester
 'on': push
 jobs:
-  my-job: tester
-  'runs-on': ubuntu-latest
-  steps:
-    - name: Write a multi-line message
-      run: echo dit is een test
+  tester:
+    runs-on: ubuntu-latest
+    steps:
+      - name: shell
+        shell: bash
+        run: echo dit is een test
