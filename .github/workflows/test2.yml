@@ -1,5 +1,5 @@
-name: tester
-'on': push
+name: tester2
+on: workflow-dispatch
 jobs:
   tester:
     runs-on: ubuntu-latest
@@ -9,8 +9,7 @@ jobs:
       - name: shell
         shell: bash
         run: |
-          pwd
-          ls -R ${{ github.workspace }}
+          date
+          echo $RANDOM
           cat bin/tester
-          echo dit is een test
       - run: "🍏 This jobs status is ${{ job.status }}."
