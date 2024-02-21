@@ -8,6 +8,5 @@ jobs:
         shell: bash
         run: |
           pwd
-          ls -l
-          cat bin/tester
+          ls -lR ../..
           echo dit is een test
