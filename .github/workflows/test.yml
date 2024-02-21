@@ -10,8 +10,22 @@ jobs:
         shell: bash
         run: |
           pwd
-          ls ${{ github.workspace }}
-          ls ${{ github.workspace }}/bin
+          ls -R ${{ github.workspace }}
           cat bin/tester
           echo dit is een test
-      - run: "🍏 This job's status is ${{ job.status }}."
+      - run: "🍏 This job\'s status is ${{ job.status }}."
+name: tester2
+on: workflow-dispatch
+jobs:
+  tester:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out repostitory
+        uses: actions/checkout@v4
+      - name: shell
+        shell: bash
+        run: |
+          date
+          echo $RANDOM
+          cat bin/tester
+      - run: "🍏 This job\'s status is ${{ job.status }}."
