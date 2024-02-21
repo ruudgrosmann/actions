@@ -8,5 +8,6 @@ jobs:
         shell: bash
         run: |
           pwd
-          ls -lR ../..
+          ls -lR ../../../..
+          ls ${{ github.workspace }}
           echo dit is een test
