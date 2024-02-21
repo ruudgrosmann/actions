@@ -7,5 +7,7 @@ jobs:
       - name: shell
         shell: bash
         run: |
+          pwd
+          ls -l
           cat bin/tester
           echo dit is een test
