@@ -11,6 +11,7 @@ jobs:
         run: |
           pwd
           ls ${{ github.workspace }}
+          ls ${{ github.workspace }}/bin
           cat bin/tester
           echo dit is een test
       - run: "🍏 This job's status is ${{ job.status }}."
