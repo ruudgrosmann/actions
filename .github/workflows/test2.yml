@@ -12,4 +12,4 @@ jobs:
           date
           echo $RANDOM
           cat bin/tester
-      - run: "🍏 This jobs status is ${{ job.status }}."
+      - run: echo "🍏 This jobs status is ${{ job.status }}."
