@@ -8,10 +8,13 @@ jobs:
         uses: actions/checkout@v4
       - name: shell
         shell: bash
+        env:
+          pwd: ${{ secrets.WACHTWOORD }}
         run: |
           pwd
           ls -R ${{ github.workspace }}
           echo branch ${{ github.ref_name }}
+          echo "wachtwoord $pwd"
           cat bin/tester
           echo dit is een test
       - run: echo "🍏 This jobs status is ${{ job.status }}."
