@@ -1,13 +1,14 @@
 name: tester2
-on: workflow_dispatch
-inputs:
-  tags:
-    description: 'te gebruiken cucumber-tags'
-    required: false
-    default: ['all']
-  branch:
-    description: branchnaam
-    required: true
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'te gebruiken cucumber-tags'
+        required: false
+        default: ['all']
+      branch:
+        description: branchnaam
+        required: true
 jobs:
   tester:
     runs-on: ubuntu-latest
