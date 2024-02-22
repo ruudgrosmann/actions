@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: check out repostitory
         uses: actions/checkout@v4
+        with:
+          ref: 'werk'
       - name: shell
         shell: bash
         run: |

@@ -11,6 +11,7 @@ jobs:
         run: |
           pwd
           ls -R ${{ github.workspace }}
+          echo branch ${{ github.ref_name }}
           cat bin/tester
           echo dit is een test
       - run: echo "🍏 This jobs status is ${{ job.status }}."
