@@ -18,12 +18,12 @@ jobs:
       - name: check out repostitory
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.branch }} 
+          ref: ${{ github.event.inputs.ref }} 
       - name: shell
         shell: bash
         run: |
           date
           echo "Tags: ${{ github.event.inputs.tags }}" 
-          echo "branch: ${{ github.event.inputs.branch }}" 
+          echo "branch: ${{ github.event.inputs.ref }}" 
           cat bin/tester
       - run: echo "》This jobs status is ${{ job.status }}."
