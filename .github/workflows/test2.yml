@@ -7,8 +7,8 @@ on:
         type: string
         required: false
         default: 'all'
-      branch:
-        description: branchnaam
+      ref:
+        description: tag- of branchnaam
         type: string
         required: true
 jobs:
@@ -18,7 +18,7 @@ jobs:
       - name: check out repostitory
         uses: actions/checkout@v4
         with:
-          ref: 'werk'
+          ref: ${{ github.event.inputs.branch }}" 
       - name: shell
         shell: bash
         run: |
@@ -26,4 +26,4 @@ jobs:
           echo "Tags: ${{ github.event.inputs.tags }}" 
           echo "branch: ${{ github.event.inputs.branch }}" 
           cat bin/tester
-      - run: echo "🍏 This jobs status is ${{ job.status }}."
+      - run: echo "》This jobs status is ${{ job.status }}."
