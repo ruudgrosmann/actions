@@ -6,7 +6,7 @@ on:
         description: 'te gebruiken cucumber-tags'
         type: string
         required: false
-        default: ['all']
+        default: 'all'
       branch:
         description: branchnaam
         type: string
