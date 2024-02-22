@@ -18,7 +18,7 @@ jobs:
       - name: check out repostitory
         uses: actions/checkout@v4
         with:
-          ref: 'werk'
+          ref: ${{ github.event.inputs.branch }}
       - name: shell
         shell: bash
         run: |
