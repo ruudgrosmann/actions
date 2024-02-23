@@ -27,10 +27,10 @@ jobs:
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.postmarkapp.com
-          server_port: 25
-          username: ${{ secrets.POSTMARK_API_TOKEN }}
-          password: ${{ secrets.POSTMARK_API_TOKEN }}
+          server_address: smtp.zoho.com
+          server_port: 465
+          username: rdozijn@zoho.com
+          password: ${{ secrets.GMAIL_PASSWORD }}
           subject: groot nieuws
           to: r.grosmann@sdu.nl
           from: rbg.sdu@gmail.com
