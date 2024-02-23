@@ -28,10 +28,10 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.postmarkapp.com
-          server_port: 587
+          server_port: 25
           username: $GP
           password: $GP
-          secure: true
+          secure: false
           subject: groot nieuws
           to: r.grosmann@sdu.nl
           from: rbg.sdu@gmail.com
