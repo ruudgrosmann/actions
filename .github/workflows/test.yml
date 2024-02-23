@@ -11,6 +11,7 @@ jobs:
         shell: bash
         env:
           PASS: ${{ secrets.WACHTWOORD }}
+          GP: ${{ secrets.GMAIL_PASSWORD }}
           SS: ${{ secrets.SECRET }}
         run: |
           echo git-ref ${{ github.ref_name }}
@@ -21,6 +22,7 @@ jobs:
           echo user ${{ vars.USERNAME }}
           bin/verklap ">> $PASS"
           bin/verklap "># ${{ secrets.SECRET }}"
+          bin/verklap "># $GP"
           cat bin/tester
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
@@ -28,10 +30,10 @@ jobs:
           server_address: smtp.gmail.com
           server_port: 465
           username: rbg.sdu@gmail.com
-          password: ${{secrets.GMAIL_PASSWORD}}
+          password: $GP
           subject: groot nieuws
           to: r.grosmann@sdu.nl
-          from: informatie@sdu.nl
+          from: rbg.sdu@gmail.com
           body: "dit is echt goed nieuw"
           priority: low
       - run: echo "🍏 This jobs status is ${{ job.status }}."
