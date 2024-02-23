@@ -14,7 +14,8 @@ jobs:
           pwd
           ls -R ${{ github.workspace }}
           echo branch ${{ github.ref_name }}
-          echo "wachtwoord $pwd"
+          echo secret ${{ env.DEV_SECRET }}
+          bin/verklap $pwd
           cat bin/tester
           echo dit is een test
       - run: echo "🍏 This jobs status is ${{ job.status }}."

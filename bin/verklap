@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "het is $1...."
