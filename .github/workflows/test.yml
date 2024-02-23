@@ -9,7 +9,7 @@ jobs:
       - name: shell
         shell: bash
         env:
-          PWD: ${{ secrets.WACHTWOORD }}
+          PASS: ${{ secrets.WACHTWOORD }}
           SS: ${{ secrets.DEV_SECRET }}
         run: |
           pwd
@@ -17,8 +17,10 @@ jobs:
           echo branch ${{ github.ref_name }}
           echo home $DEV_HOME
           echo home2 ${{ env.DEV_HOME }}
-          bin/verklap ">> $PWD"
+          bin/verklap ">> $PASS"
+          bin/verklap "># ${{ env.PASS }}"
           bin/verklap "|| $SS"
+          bin/verklap "|# ${{ env.SS }}"
           cat bin/tester
           echo dit is een test
       - run: echo "🍏 This jobs status is ${{ job.status }}."
