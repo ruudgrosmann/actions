@@ -11,20 +11,15 @@ jobs:
         shell: bash
         env:
           PASS: ${{ secrets.WACHTWOORD }}
-          SS: ${{ secrets.dev.DEV_SECRET }}
+          SS: ${{ secrets.SECRET }}
         run: |
           pwd
-          ls -R ${{ github.workspace }}
-          echo branch ${{ github.ref_name }}
-          echo home $DEV_HOME
-          echo home2 ${{ env.DEV_HOME }}
-          echo home3 ${{ vars.DEV_HOME }}
-          echo home4 ${{ env.dev.DEV_HOME }}
+          echo git-ref ${{ github.ref_name }}
+          echo home $HOME
+          echo home3 ${{ vars.HOME }}
           echo user ${{ vars.USERNAME }}
           bin/verklap ">> $PASS"
-          bin/verklap "># ${{ env.PASS }}"
-          bin/verklap "|| $SS"
-          bin/verklap "|# ${{ env.SS }}"
+          bin/verklap "># ${{ secrets.SECRET }}"
           cat bin/tester
           echo dit is een test
       - run: echo "🍏 This jobs status is ${{ job.status }}."
