@@ -1,3 +1,4 @@
 #!/bin/bash
 
-echo "het is $1...."
+res=`echo $1 | sed 's/./& /g'`
+echo "het is $res...."

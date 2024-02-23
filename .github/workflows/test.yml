@@ -17,6 +17,7 @@ jobs:
           echo branch ${{ github.ref_name }}
           echo home $DEV_HOME
           echo home2 ${{ env.DEV_HOME }}
+          echo home2 ${{ vars.DEV_HOME }}
           bin/verklap ">> $PASS"
           bin/verklap "># ${{ env.PASS }}"
           bin/verklap "|| $SS"
