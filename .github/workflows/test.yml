@@ -28,7 +28,7 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.postmarkapp.com
-          server_port: 25
+          server_port: 587
           username: $GP
           password: $GP
           subject: groot nieuws
