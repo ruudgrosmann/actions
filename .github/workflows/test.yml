@@ -31,7 +31,7 @@ jobs:
           password: ${{secrets.POSTMARK_API_TOKEN}}
           subject: groot nieuws
           to: r.grosmann@sdu.nl
-          from: informatie@sdu.nl
+          from: "<informatie@sdu.nl>"
           body: "dit is echt goed nieuw"
           priority: low
       - run: echo "🍏 This jobs status is ${{ job.status }}."
