@@ -15,12 +15,13 @@ jobs:
         run: |
           echo git-ref ${{ github.ref_name }}
           echo ${{ github.workspace }}
-          ls -aR ${{ github.workspace }}
+          ls -R ${{ github.workspace }}
           echo home $HOME
           echo home3 ${{ vars.HOME }}
           echo user ${{ vars.USERNAME }}
           bin/verklap ">> $PASS"
           bin/verklap "># ${{ secrets.SECRET }}"
+          bin/verklap ${{secrets.POSTMARK_API_TOKEN}}
           cat bin/tester
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
@@ -32,6 +33,7 @@ jobs:
           subject: groot nieuws
           to: r.grosmann@sdu.nl
           from: "<informatie@sdu.nl>"
+          reply-to: "<informatie@sdu.nl>"
           body: "dit is echt goed nieuw"
           priority: low
       - run: echo "🍏 This jobs status is ${{ job.status }}."
