@@ -10,14 +10,16 @@ jobs:
         shell: bash
         env:
           PASS: ${{ secrets.WACHTWOORD }}
-          SS: ${{ secrets.DEV_SECRET }}
+          SS: ${{ secrets.dev.DEV_SECRET }}
         run: |
           pwd
           ls -R ${{ github.workspace }}
           echo branch ${{ github.ref_name }}
           echo home $DEV_HOME
           echo home2 ${{ env.DEV_HOME }}
-          echo home2 ${{ vars.DEV_HOME }}
+          echo home3 ${{ vars.DEV_HOME }}
+          echo home4 ${{ env.dev.DEV_HOME }}
+          echo user ${{ vars.USERNAME }}
           bin/verklap ">> $PASS"
           bin/verklap "># ${{ env.PASS }}"
           bin/verklap "|| $SS"
