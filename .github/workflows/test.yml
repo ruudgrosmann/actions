@@ -31,6 +31,7 @@ jobs:
           server_port: 587
           username: $GP
           password: $GP
+          secure: true
           subject: groot nieuws
           to: r.grosmann@sdu.nl
           from: rbg.sdu@gmail.com
