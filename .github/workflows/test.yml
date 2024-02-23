@@ -5,21 +5,19 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
-      - name: check out repostitory
-        uses: actions/checkout@v4
       - name: shell
         shell: bash
         env:
           PASS: ${{ secrets.WACHTWOORD }}
           SS: ${{ secrets.SECRET }}
         run: |
-          pwd
           echo git-ref ${{ github.ref_name }}
+          echo ${{ github.workspace }}
+          ls -R ${{ github.workspace }}
           echo home $HOME
           echo home3 ${{ vars.HOME }}
           echo user ${{ vars.USERNAME }}
           bin/verklap ">> $PASS"
           bin/verklap "># ${{ secrets.SECRET }}"
           cat bin/tester
-          echo dit is een test
       - run: echo "🍏 This jobs status is ${{ job.status }}."
