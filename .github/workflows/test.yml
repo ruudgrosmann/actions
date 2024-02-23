@@ -11,7 +11,7 @@ jobs:
         shell: bash
         env:
           PASS: ${{ secrets.WACHTWOORD }}
-          GP: ${{ secrets.GMAIL_PASSWORD }}
+          GP: ${{ secrets.POSTMARK_API_TOKEN }}
           SS: ${{ secrets.SECRET }}
         run: |
           echo git-ref ${{ github.ref_name }}
@@ -27,8 +27,8 @@ jobs:
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.zoho.com
-          server_port: 465
+          server_address: smtp.postmarkapp.com
+          server_port: 25
           username: rdozijn@zoho.com
           password: $GP
           subject: groot nieuws
