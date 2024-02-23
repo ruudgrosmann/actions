@@ -29,9 +29,8 @@ jobs:
         with:
           server_address: smtp.postmarkapp.com
           server_port: 25
-          username: $GP
-          password: $GP
-          secure: false
+          username: ${{ secrets.POSTMARK_API_TOKEN }}
+          password: ${{ secrets.POSTMARK_API_TOKEN }}
           subject: groot nieuws
           to: r.grosmann@sdu.nl
           from: rbg.sdu@gmail.com
