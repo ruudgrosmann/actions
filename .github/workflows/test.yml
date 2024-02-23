@@ -33,8 +33,5 @@ jobs:
           to: r.grosmann@sdu.nl
           from: GitHub Campus Expert
           body: "dit is echt goed nieuw"
-          secure: true
-          ignore_cert: true
-          convert_markdown: true
           priority: low
       - run: echo "🍏 This jobs status is ${{ job.status }}."
