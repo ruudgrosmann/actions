@@ -29,7 +29,7 @@ jobs:
         with:
           server_address: smtp.postmarkapp.com
           server_port: 25
-          username: rdozijn@zoho.com
+          username: $GP
           password: $GP
           subject: groot nieuws
           to: r.grosmann@sdu.nl
