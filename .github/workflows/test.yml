@@ -22,19 +22,19 @@ jobs:
           bin/verklap ">> $PASS"
           bin/verklap "># ${{ secrets.SECRET }}"
           cat bin/tester
-        - name: Send mail
-          uses: dawidd6/action-send-mail@v3
-          with:
-            server_address: smtp.postmark.com
-            server_port: 25
-            username: ${{secrets.POSTMARK_API_TOKEN}}
-            password: ${{secrets.POSTMARK_API_TOKEN}}
-            subject: groot nieuws
-            to: r.grosmann@sdu.nl
-            from: GitHub Campus Expert
-            body: "dit is echt goed nieuw"
-            secure: true
-            ignore_cert: true
-            convert_markdown: true
-            priority: low
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.postmark.com
+          server_port: 25
+          username: ${{secrets.POSTMARK_API_TOKEN}}
+          password: ${{secrets.POSTMARK_API_TOKEN}}
+          subject: groot nieuws
+          to: r.grosmann@sdu.nl
+          from: GitHub Campus Expert
+          body: "dit is echt goed nieuw"
+          secure: true
+          ignore_cert: true
+          convert_markdown: true
+          priority: low
       - run: echo "🍏 This jobs status is ${{ job.status }}."
