@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
+      - name: check out repostitory
+        uses: actions/checkout@v4
       - name: shell
         shell: bash
         env:
@@ -13,11 +15,26 @@ jobs:
         run: |
           echo git-ref ${{ github.ref_name }}
           echo ${{ github.workspace }}
-          ls -R ${{ github.workspace }}
+          ls -aR ${{ github.workspace }}
           echo home $HOME
           echo home3 ${{ vars.HOME }}
           echo user ${{ vars.USERNAME }}
           bin/verklap ">> $PASS"
           bin/verklap "># ${{ secrets.SECRET }}"
           cat bin/tester
+        - name: Send mail
+          uses: dawidd6/action-send-mail@v3
+          with:
+            server_address: smtp.postmark.com
+            server_port: 25
+            username: ${{secrets.POSTMARK_API_TOKEN}}
+            password: ${{secrets.POSTMARK_API_TOKEN}}
+            subject: groot nieuws
+            to: r.grosmann@sdu.nl
+            from: GitHub Campus Expert
+            body: "dit is echt goed nieuw"
+            secure: true
+            ignore_cert: true
+            convert_markdown: true
+            priority: low
       - run: echo "🍏 This jobs status is ${{ job.status }}."
