@@ -1,5 +1,9 @@
 name: tester
-'on': push
+on: push
+env:
+  PASS: ${{ secrets.WACHTWOORD }}
+  GP: ${{ secrets.POSTMARK_API_TOKEN }}
+  SS: ${{ secrets.SECRET }}
 jobs:
   tester:
     runs-on: ubuntu-latest
@@ -9,10 +13,6 @@ jobs:
         uses: actions/checkout@v4
       - name: shell
         shell: bash
-        env:
-          PASS: ${{ secrets.WACHTWOORD }}
-          GP: ${{ secrets.POSTMARK_API_TOKEN }}
-          SS: ${{ secrets.SECRET }}
         run: |
           echo git-ref ${{ github.ref_name }}
           echo ${{ github.workspace }}
