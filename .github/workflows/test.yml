@@ -9,13 +9,16 @@ jobs:
       - name: shell
         shell: bash
         env:
-          pwd: ${{ secrets.WACHTWOORD }}
+          PWD: ${{ secrets.WACHTWOORD }}
+          SS: ${{ secrets.DEV_SECRET }}
         run: |
           pwd
           ls -R ${{ github.workspace }}
           echo branch ${{ github.ref_name }}
-          echo secret ${{ env.DEV_SECRET }}
-          bin/verklap $pwd
+          echo home $DEV_HOME
+          echo home2 ${{ env.DEV_HOME }}
+          bin/verklap ">> $PWD"
+          bin/verklap "|| $SS"
           cat bin/tester
           echo dit is een test
       - run: echo "🍏 This jobs status is ${{ job.status }}."
