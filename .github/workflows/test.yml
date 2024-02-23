@@ -25,7 +25,7 @@ jobs:
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.postmark.com
+          server_address: smtp.postmarkapp.com
           server_port: 25
           username: ${{secrets.POSTMARK_API_TOKEN}}
           password: ${{secrets.POSTMARK_API_TOKEN}}
