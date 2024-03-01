@@ -3,7 +3,6 @@ on: push
 env:
   PASS: ${{ secrets.WACHTWOORD }}
   GP: ${{ secrets.POSTMARK_API_TOKEN }}
-  SS: ${{ secrets.SECRET }}
 jobs:
   tester:
     runs-on: ubuntu-latest
@@ -11,12 +10,18 @@ jobs:
     steps:
       - name: check out repostitory
         uses: actions/checkout@v4
+      - name: NPM Install
+        uses: ./.github/actions/npm-install
+        with:
+          node_auth_token: ${{ secrets.SDU_READ_PACKAGES_GH_PAT }}
+          node_version: 20.11.0
       - name: shell
         shell: bash
         run: |
           echo git-ref ${{ github.ref_name }}
           echo ${{ github.workspace }}
           ls -R ${{ github.workspace }}
+          ls -R ${{ github.workspace }}/.github
           echo home $HOME
           echo home3 ${{ vars.HOME }}
           echo user ${{ vars.USERNAME }}
@@ -24,6 +29,8 @@ jobs:
           bin/verklap "># ${{ secrets.SECRET }}"
           bin/verklap "># $GP"
           cat bin/tester
+          node zipper.js
+          ls ${{ github.workspace }}
       - name: Send email
         uses: devellany/send-mail@v1.0.2
         with:
