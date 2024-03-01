@@ -24,16 +24,17 @@ jobs:
           bin/verklap "># ${{ secrets.SECRET }}"
           bin/verklap "># $GP"
           cat bin/tester
-      - name: Send mail
-        uses: dawidd6/action-send-mail@v3
+      - name: Send email
+        uses: devellany/send-mail@v1.0.2
         with:
-          server_address: smtp.zoho.com
-          server_port: 465
-          username: rdozijn@zoho.com
-          password: ${{ secrets.GMAIL_PASSWORD }}
-          subject: groot nieuws
+          host: smtp.postmark.com
+          account: ${{secrets.POSTMARK_API_TOKEN}}
+          password: ${{secrets.POSTMARK_API_TOKEN}}
+          sender: devellany
+          from: informatie@sdu.nl
+          subject: mail van github 1
+          body: file://mail.html
+          attachments: '[{"path":"mail.html"}]'
           to: r.grosmann@sdu.nl
-          from: rbg.sdu@gmail.com
-          body: "dit is echt goed nieuw"
-          priority: low
       - run: echo "🍏 This jobs status is ${{ job.status }}."
+
