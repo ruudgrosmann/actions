@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "stdio": "^2.1.3",
+    "system-commands": "^1.1.7"
+  }
+}
