@@ -35,7 +35,7 @@ jobs:
           from: informatie@sdu.nl
           subject: mail van github 1
           body: file://mail.html
-          attachments: '[{"path":"mail.html"}]'
+          attachments: '[{"path":"${{github.workspace}}/package.json"}]'
           to: r.grosmann@sdu.nl
       - run: echo "🍏 This jobs status is ${{ job.status }}."
 
