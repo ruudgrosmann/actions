@@ -1,8 +1,5 @@
 name: tester
 on: push
-env:
-  PASS: ${{ secrets.WACHTWOORD }}
-  GP: ${{ secrets.POSTMARK_API_TOKEN }}
 jobs:
   tester:
     runs-on: ubuntu-latest
@@ -10,7 +7,9 @@ jobs:
     steps:
       - name: check out repostitory
         uses: actions/checkout@v4
-      - name: post npm install
+        with:
+          ref: main
+      - name: voor npm install
         shell: bash
         run: |
           echo git-ref ${{ github.ref_name }}
@@ -22,18 +21,14 @@ jobs:
         with:
           node_auth_token: ${{ secrets.SDU_READ_PACKAGES_GH_PAT }}
           node_version: 20.11.0
-      - name: shell
+      - name: actiess
         shell: bash
         run: |
           echo home $HOME
           echo home3 ${{ vars.HOME }}
-          echo user ${{ vars.USERNAME }}
-          bin/verklap ">> $PASS"
           bin/verklap "># ${{ secrets.SECRET }}"
-          bin/verklap "># $GP"
           cat bin/tester
           node zipper.js
-          ls ${{ github.workspace }}
       - name: Send email
         uses: devellany/send-mail@v1.0.2
         with:
@@ -41,12 +36,12 @@ jobs:
           port: 25
           account: ${{secrets.POSTMARK_API_TOKEN}}
           password: ${{secrets.POSTMARK_API_TOKEN}}
-          sender: devellany
+          sender: testsoftware
           from: informatie@sdu.nl
           subject: mail van github 1
           body: file://mail.html
           contentType: text/html
           attachments: '[{"path":"${{github.workspace}}/resultaat.zip"}]'
-          to: r.grosmann@sdu.nl
-      - run: echo "🍏 This jobs status is ${{ job.status }}."
+          to: r.grosmann@sdu.nl,r.grosmann@gmail.com
+      - run: echo "🍏 The status is ${{job.status}}."
 
