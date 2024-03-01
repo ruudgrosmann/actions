@@ -10,6 +10,13 @@ jobs:
     steps:
       - name: check out repostitory
         uses: actions/checkout@v4
+      - name: post npm install
+        shell: bash
+        run: |
+          echo git-ref ${{ github.ref_name }}
+          echo ${{ github.workspace }}
+          ls -R ${{ github.workspace }}
+          ls -R ${{ github.workspace }}/.github
       - name: NPM Install
         uses: ./.github/actions/npm-install
         with:
@@ -18,10 +25,6 @@ jobs:
       - name: shell
         shell: bash
         run: |
-          echo git-ref ${{ github.ref_name }}
-          echo ${{ github.workspace }}
-          ls -R ${{ github.workspace }}
-          ls -R ${{ github.workspace }}/.github
           echo home $HOME
           echo home3 ${{ vars.HOME }}
           echo user ${{ vars.USERNAME }}
