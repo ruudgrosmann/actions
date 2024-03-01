@@ -28,6 +28,7 @@ jobs:
         uses: devellany/send-mail@v1.0.2
         with:
           host: smtp.postmarkapp.com
+          port: 25
           account: ${{secrets.POSTMARK_API_TOKEN}}
           password: ${{secrets.POSTMARK_API_TOKEN}}
           sender: devellany
