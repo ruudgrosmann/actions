@@ -2,3 +2,4 @@
 
 res=`echo $1 | sed 's/./& /g'`
 echo "het is $res...."
+echo $BLA

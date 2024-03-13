@@ -4,6 +4,8 @@ jobs:
   tester:
     runs-on: ubuntu-latest
     environment: dev
+    env:
+      BLA: 55
     steps:
       - name: check out repostitory
         uses: actions/checkout@v4
@@ -29,19 +31,5 @@ jobs:
           bin/verklap "># ${{ secrets.SECRET }}"
           cat bin/tester
           node zipper.js
-      - name: Send email
-        uses: devellany/send-mail@v1.0.2
-        with:
-          host: smtp.postmarkapp.com
-          port: 25
-          account: ${{secrets.POSTMARK_API_TOKEN}}
-          password: ${{secrets.POSTMARK_API_TOKEN}}
-          sender: testsoftware
-          from: informatie@sdu.nl
-          subject: mail van github 1
-          body: file://mail.html
-          contentType: text/html
-          attachments: '[{"path":"${{github.workspace}}/resultaat.zip"}]'
-          to: r.grosmann@sdu.nl,r.grosmann@gmail.com
       - run: echo "🍏 The status is ${{job.status}}."
 
