@@ -10,7 +10,7 @@ var ops = stdio.getopt({
 const system = require('system-commands');
 const datestamp = true;
 //const argumenten = process.argv.slice(2);
-var res = __dirname + '/' + (ops.args && ops.args[0]) || 'resultaat.zip');
+var res = __dirname + '/' + ((ops.args && ops.args[0]) || 'resultaat.zip');
 
 function tweepos (i) { return ( (i < 10 ? '0' : '') + i) }
 function getDateStamp() {
