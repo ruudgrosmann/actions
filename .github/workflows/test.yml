@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     env:
-      BLA: 55
+      POSTMARK_TOKEN: ${{ secrets.POSTMARK_API_TOKEN }}
     steps:
       - name: check out repostitory
         uses: actions/checkout@v4
