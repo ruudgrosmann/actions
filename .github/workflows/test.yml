@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     env:
-      POSTMARK_TOKEN: ${{ secrets.POSTMARK_API_TOKEN }}
+      POSTMARK_TOKEN: ${{ secrets.POSTMARK_API_token }}
     steps:
       - name: check out repostitory
         uses: actions/checkout@v4
@@ -21,7 +21,6 @@ jobs:
       - name: NPM Install
         uses: ./.github/actions/npm-install
         with:
-          node_auth_token: ${{ secrets.SDU_READ_PACKAGES_GH_PAT }}
           node_version: 20.11.0
       - name: actiess
         shell: bash
