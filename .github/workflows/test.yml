@@ -11,21 +11,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-      - name: voor npm install
-        shell: bash
-        run: |
-          echo git-ref ${{ github.ref_name }}
-          echo ${{ github.workspace }}
-          ls -R ${{ github.workspace }}
-          ls -R ${{ github.workspace }}/.github
-      - name: NPM Install
+      - name: installatie NPM
         uses: actions/setup-node@v4
         with:
           cache: "npm"
           node_version: 20.11.0
+      - run: npm ci
         shell: bash
-        run: npm ci
-      - name: actiess
+      - name: acties
         shell: bash
         run: |
           echo "= 02 ========"
