@@ -5,12 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     env:
-      POSTMARK_TOKEN: ${{ secrets.POSTMARK_API_token }}
+      POSTMARK_TOKEN: ${{ secrets.POSTMARK_API_TOKEN }}
     steps:
       - name: check out repostitory
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: deze
       - name: voor npm install
         shell: bash
         run: |
@@ -25,6 +25,7 @@ jobs:
       - name: actiess
         shell: bash
         run: |
+          echo "= 01 ========"
           echo home $HOME
           echo home3 ${{ vars.HOME }}
           bin/verklap "># ${{ secrets.SECRET }}"
