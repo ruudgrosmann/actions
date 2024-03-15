@@ -10,7 +10,7 @@ jobs:
       - name: check out repostitory
         uses: actions/checkout@v4
         with:
-          ref: deze
+          ref: main
       - name: voor npm install
         shell: bash
         run: |
@@ -19,13 +19,16 @@ jobs:
           ls -R ${{ github.workspace }}
           ls -R ${{ github.workspace }}/.github
       - name: NPM Install
-        uses: ./.github/actions/npm-install
+        uses: actions/setup-node@v4
         with:
+          cache: "npm"
           node_version: 20.11.0
+        shell: bash
+        run: npm ci
       - name: actiess
         shell: bash
         run: |
-          echo "= 01 ========"
+          echo "= 02 ========"
           echo home $HOME
           echo home3 ${{ vars.HOME }}
           bin/verklap "># ${{ secrets.SECRET }}"
