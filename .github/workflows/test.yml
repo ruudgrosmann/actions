@@ -6,19 +6,19 @@ jobs:
     environment: dev
     env:
       POSTMARK_TOKEN: ${{ secrets.POSTMARK_API_TOKEN }}
-      VERANDERD: true
+      VERANDERD: 'true'
     steps:
       - name: check out repostitory
         uses: actions/checkout@v4
         with:
           ref: main
       - name: controle of eerste stap moet worden uitgevoerd
-        if: env.VERANDERD == true
+        if: env.VERANDERD == 'true'
         shell: bash
         run: |
           echo package.json is gewijzigd
       - name: controle of eerste stap moet worden uitgevoerd
-        if: env.VERANDERD != true
+        if: env.VERANDERD != 'true'
         shell: bash
         run: |
           echo package.json is ongewijzigd
