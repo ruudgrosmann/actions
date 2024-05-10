@@ -1,0 +1,6 @@
+if [ `git diff --name-only HEAD repo/main | grep package-lock.json` ]; then
+echo VERANDERD=true
+else
+echo VERANDERD=false
+fi
+
