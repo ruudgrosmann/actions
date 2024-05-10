@@ -6,7 +6,7 @@ jobs:
     environment: dev
     env:
       POSTMARK_TOKEN: ${{ secrets.POSTMARK_API_TOKEN }}
-      VERANDERD: false
+      VERANDERD: true
     steps:
       - name: check out repostitory
         uses: actions/checkout@v4
@@ -30,9 +30,5 @@ jobs:
           echo home3 ${{ vars.HOME }}
           bin/verklap "># ${{ secrets.SECRET }}"
           cat bin/tester
-      - name: extra test
-        shell: bash
-        run: |
-          echo "=  extra test ========"
       - run: echo "🍏 The status is ${{job.status}}."
 
