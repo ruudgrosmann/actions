@@ -31,7 +31,5 @@ jobs:
         shell: bash
         run: |
           echo "=  extra test ========"
-        run: |
-          echo "=  extra test2 ========"
       - run: echo "🍏 The status is ${{job.status}}."
 
