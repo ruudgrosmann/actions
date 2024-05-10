@@ -12,11 +12,13 @@ jobs:
         with:
           ref: main
       - name: controle of package.json is gewijzigd
-        if: ${{  git diff --name-only HEAD HEAD~2 | grep package.json }}
         shell: bash
         run: |
-          echo package.json is gewijzigd
-          echo extra build nodig
+          if [ git diff --name-only HEAD HEAD~2 | grep package.json ] then
+            echo package.json is gewijzigd
+          else
+            echo package.json is ongewijzigd
+          fi
       - name: acties
         shell: bash
         run: |
