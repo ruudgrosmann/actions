@@ -27,4 +27,4 @@ jobs:
           echo "branch: ${{ github.event.inputs.ref }}" 
           cat bin/tester
       - run: echo "》This jobs status is ${{ job.status }}."
-      - run: echo "》This is for testing."
+      - run: echo "》This is for testing from me."
